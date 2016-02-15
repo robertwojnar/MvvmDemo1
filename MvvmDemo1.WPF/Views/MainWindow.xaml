@@ -15,11 +15,16 @@
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}" 
-                                        PassEventArgsToCommand="True" />
+                                PassEventArgsToCommand="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
-        <Label x:Name="Label" HorizontalAlignment="Left" Margin="82,78,0,0" VerticalAlignment="Top"
-               Content="{Binding Title}"/>
+        <local:FooUserControl>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="BoardClick">
+                    <cmd:EventToCommand Command="{Binding ClickedCommand}" PassEventArgsToCommand="True" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </local:FooUserControl>
     </Grid>
 </Window>

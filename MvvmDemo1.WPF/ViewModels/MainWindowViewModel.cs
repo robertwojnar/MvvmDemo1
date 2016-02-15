@@ -14,10 +14,16 @@ namespace MvvmDemo1.WPF.ViewModels
     {
         public string Title => "Main window";
         public ICommand LoadedCommand => new RelayCommand(Loaded);
+        public ICommand ClickedCommand => new RelayCommand(Clicked);
 
         private void Loaded()
         {
             Debug.WriteLine("Loaded");
+        }
+
+        private void Clicked()
+        {
+            Debug.WriteLine("Clicked");
         }
     }
 }
