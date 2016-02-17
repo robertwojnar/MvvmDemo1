@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MvvmDemo1.WPF.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,15 +26,15 @@ namespace MvvmDemo1.WPF.Views
             InitializeComponent();
         }
 
-        public event EventHandler BoardClick;
-
+        public event EventHandler<BarEventArgs> BarClick;
         private void UIElement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             double x = e.GetPosition(this).X;
             double y = e.GetPosition(this).Y;
             string value_to_pass = "[" + x + "," + y + "]";
 
-            BoardClick?.Invoke(sender, e);
+            BarEventArgs bar = new BarEventArgs() { Bar = 2, Foo = value_to_pass };
+            BarClick?.Invoke(sender, bar);
         }
     }
 }

@@ -14,14 +14,13 @@
     </Window.DataContext>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}" 
-                                PassEventArgsToCommand="True" />
+            <cmd:EventToCommand Command="{Binding Mode=OneWay, Path=LoadedCommand}" PassEventArgsToCommand="True" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
         <local:FooUserControl>
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="BoardClick">
+                <i:EventTrigger EventName="BarClick">
                     <cmd:EventToCommand Command="{Binding ClickedCommand}" PassEventArgsToCommand="True" />
                 </i:EventTrigger>
             </i:Interaction.Triggers>

@@ -13,17 +13,17 @@ namespace MvvmDemo1.WPF.ViewModels
     public class MainWindowViewModel : ObservableObject
     {
         public string Title => "Main window";
+        
         public ICommand LoadedCommand => new RelayCommand(Loaded);
-        public ICommand ClickedCommand => new RelayCommand(Clicked);
-
         private void Loaded()
         {
             Debug.WriteLine("Loaded");
         }
 
-        private void Clicked()
+        public ICommand ClickedCommand => new RelayCommand<BarEventArgs>(o => Clicked(o.Foo));
+        private void Clicked(string a)
         {
-            Debug.WriteLine("Clicked");
+            Debug.WriteLine("Clicked " + a);
         }
     }
 }
