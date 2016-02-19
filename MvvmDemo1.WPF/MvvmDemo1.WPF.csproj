@@ -80,7 +80,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BarEventArgs.cs" />
-    <Compile Include="ViewModels\FooUserControlViewModel.cs" />
+    <Compile Include="ReceivedEventArgs.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="Views\FooUserControl.xaml.cs">
       <DependentUpon>FooUserControl.xaml</DependentUpon>

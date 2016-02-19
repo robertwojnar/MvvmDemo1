@@ -12,8 +12,8 @@ namespace MvvmDemo1.WPF.ViewModels
 {
     public class MainWindowViewModel : ObservableObject
     {
-        public string Title => "Main window";
-        
+        public event EventHandler<ReceivedEventArgs> OnSomethingReceived;
+
         public ICommand LoadedCommand => new RelayCommand(Loaded);
         private void Loaded()
         {
@@ -21,9 +21,13 @@ namespace MvvmDemo1.WPF.ViewModels
         }
 
         public ICommand ClickedCommand => new RelayCommand<BarEventArgs>(o => Clicked(o.Foo));
-        private void Clicked(string a)
+        private async void Clicked(string a)
         {
             Debug.WriteLine("Clicked " + a);
+            await Task.Delay(2000);
+
+            ReceivedEventArgs args = new ReceivedEventArgs { Data = 33 };
+            OnSomethingReceived?.Invoke(this, args);
         }
     }
 }

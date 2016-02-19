@@ -1,6 +1,7 @@
 ﻿using MvvmDemo1.WPF.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,17 @@ namespace MvvmDemo1.WPF.Views
         public FooUserControl()
         {
             InitializeComponent();
+            this.DataContextChanged += FooUserControl_DataContextChanged;
+        }
+
+        private void FooUserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            ((MainWindowViewModel)DataContext).OnSomethingReceived += FooUserControl_OnSomethingReceived;
+        }
+
+        private void FooUserControl_OnSomethingReceived(object sender, ReceivedEventArgs e)
+        {
+            Debug.WriteLine("Received: " + e.Data);
         }
 
         public event EventHandler<BarEventArgs> BarClick;
